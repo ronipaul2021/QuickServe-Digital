@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="theme-color" content="#0a2540">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>QuickServe Digital | Government & Digital Services Hub</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e2a3e;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        :root {
+            --navy: #0a2540;
+            --violet: #7c3aed;
+            --violet-dark: #6d28d9;
+            --violet-light: #8b5cf6;
+            --yellow: #f9a825;
+            --gray-light: #f1f5f9;
+            --gray: #64748b;
+            --white: #ffffff;
+            --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 40px 0;
+            }
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 5vw, 2.2rem);
+            font-weight: 800;
+            color: var(--navy);
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            word-break: break-word;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: var(--yellow);
+            margin: 12px auto 0;
+            border-radius: 4px;
+        }
+
+        .btn-primary {
+            background: var(--violet);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-weight: 600;
+            border-radius: 40px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            background: var(--violet-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--violet);
+            color: var(--violet);
+            padding: 10px 26px;
+            font-weight: 600;
+            border-radius: 40px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-outline:hover {
+            background: var(--violet);
+            color: white;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 12px 20px;
+            max-width: 1280px;
+            margin: 0 auto;
+            gap: 15px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .logo h2 {
+            color: var(--navy);
+            font-weight: 800;
+            font-size: clamp(1.2rem, 4vw, 1.7rem);
+        }
+
+        .logo span {
+            color: orange;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--navy);
+            transition: 0.2s;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: var(--violet);
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--navy);
+            padding: 5px;
+            transition: 0.2s;
+        }
+
+        .menu-icon:active {
+            transform: scale(0.95);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 100%);
+            padding: 40px 0 50px;
+        }
+
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .owner-photo {
+            width: clamp(180px, 30vw, 280px);
+            height: clamp(180px, 30vw, 280px);
+            object-fit: cover;
+            border-radius: 25px;
+            box-shadow: var(--shadow-md);
+            border: 0px solid #198800;
+        }
+
+        .hero-content {
+            flex: 1.2;
+            min-width: 250px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(1.8rem, 6vw, 3rem);
+            font-weight: 800;
+            /* color: var(--navy); */
+            margin-bottom: 16px;
+            word-break: break-word;
+        }
+
+        .tagline {
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            color: var(--gray);
+            margin-bottom: 28px;
+            border-left: 5px solid var(--yellow);
+            padding-left: 20px;
+            word-break: break-word;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* About Section - New Layout with Photo on Right */
+        .about {
+            background: var(--white);
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            background: var(--gray-light);
+            border-radius: 32px;
+            padding: clamp(30px, 5vw, 50px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .about-content {
+            flex: 1.2;
+            min-width: 250px;
+        }
+
+        .about-content .owner-name {
+            font-size: clamp(1.6rem, 5vw, 2rem);
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 16px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .about-content .owner-name:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--yellow);
+            margin-top: 8px;
+            border-radius: 3px;
+        }
+
+        .about-description {
+            font-size: clamp(1rem, 3.5vw, 1.1rem);
+            line-height: 1.6;
+            color: var(--gray);
+            margin: 20px 0;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 25px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 20px;
+            min-width: 100px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-number {
+            font-size: clamp(1.5rem, 4vw, 1.8rem);
+            font-weight: 800;
+            color: var(--violet);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-top: 5px;
+        }
+
+        .about-photo {
+            flex: 0.8;
+            text-align: center;
+            min-width: 220px;
+        }
+
+        .about-round-photo {
+            width: clamp(200px, 25vw, 280px);
+            height: clamp(200px, 25vw, 280px);
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: var(--shadow-md);
+            border: 5px solid var(--yellow);
+            transition: transform 0.3s ease;
+        }
+
+        .about-round-photo:hover {
+            transform: scale(1.02);
+        }
+
+        .highlight-badge {
+            display: flex;
+            gap: 15px;
+            margin-top: 24px;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: white;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-weight: 500;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            color: var(--navy);
+            font-size: clamp(0.85rem, 3vw, 0.95rem);
+        }
+
+        /* Services Table Styles */
+        .services {
+            background: var(--gray-light);
+        }
+
+        .services-table-wrapper {
+            background: var(--white);
+            border-radius: 24px;
+            overflow-x: auto;
+            box-shadow: var(--shadow-sm);
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .services-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: clamp(0.85rem, 3vw, 1rem);
+            min-width: 500px;
+        }
+
+        .services-table thead tr {
+            background: var(--navy);
+            color: white;
+        }
+
+        .services-table th {
+            padding: clamp(12px, 3vw, 16px) clamp(12px, 3vw, 20px);
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .services-table td {
+            padding: clamp(10px, 2.5vw, 14px) clamp(12px, 3vw, 20px);
+            border-bottom: 1px solid #e2e8f0;
+            color: var(--navy);
+        }
+
+        .services-table tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        .service-type-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: clamp(0.75rem, 2.5vw, 0.8rem);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* Badge Classes */
+        .badge-govt {
+            background: #e0e7ff;
+            color: #1e40af;
+        }
+
+        .badge-digital {
+            background: #fae8ff;
+            color: #a21caf;
+        }
+
+        .badge-shop {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .badge-computer {
+            background: #fed7aa;
+            color: #9a3412;
+        }
+
+        /* Loading States */
+        .loading-spinner {
+            text-align: center;
+            padding: 40px;
+            color: var(--violet);
+            background: white;
+            border-radius: 24px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: var(--gray);
+            background: white;
+            border-radius: 24px;
+        }
+
+        /* Features Grid */
+        .why-us {
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            text-align: center;
+        }
+
+        .feature {
+            background: var(--gray-light);
+            padding: clamp(25px, 5vw, 32px) clamp(15px, 3vw, 20px);
+            border-radius: 32px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature i {
+            font-size: clamp(2rem, 6vw, 2.8rem);
+            color: var(--yellow);
+            margin-bottom: 16px;
+        }
+
+        .feature h3 {
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            margin-bottom: 8px;
+            color: var(--navy);
+        }
+
+        .feature p {
+            font-size: clamp(0.85rem, 3vw, 0.95rem);
+        }
+
+        /* Pricing Section */
+        .pricing-card {
+            background: white;
+            border-radius: 32px;
+            padding: clamp(25px, 5vw, 32px);
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .pricing-table tr {
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .pricing-table td {
+            padding: clamp(12px, 3vw, 14px) 0;
+            font-size: clamp(0.85rem, 3vw, 0.95rem);
+        }
+
+        .pricing-table td:first-child {
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .pricing-table td:last-child {
+            text-align: right;
+            color: var(--violet);
+            font-weight: 600;
+        }
+
+        .pricing-note {
+            margin-top: 20px;
+            background: #fef9e3;
+            padding: 12px;
+            border-radius: 20px;
+            color: #b45f06;
+            font-size: clamp(0.8rem, 3vw, 0.9rem);
+        }
+
+        /* Contact Section */
+        .contact-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            background: var(--gray-light);
+            border-radius: 40px;
+            padding: clamp(25px, 5vw, 40px);
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .contact-info p {
+            margin: 15px 0;
+            font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            word-break: break-word;
+        }
+
+        .contact-info i {
+            width: 32px;
+            color: var(--violet);
+            font-size: clamp(1.2rem, 4vw, 1.4rem);
+            flex-shrink: 0;
+        }
+
+        .map-placeholder {
+            flex: 1;
+            background: #e2e8f0;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--gray);
+            min-height: 220px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--navy);
+            color: #cddfe7;
+            padding: 40px 0 24px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 25px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: #cddfe7;
+            text-decoration: none;
+            transition: 0.2s;
+            font-size: clamp(0.85rem, 3vw, 0.95rem);
+        }
+
+        .footer-links a:hover {
+            color: var(--yellow);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #2d4a6e;
+            font-size: clamp(0.75rem, 2.5vw, 0.85rem);
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50px;
+            padding: clamp(10px, 3vw, 14px) clamp(18px, 4vw, 24px);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: clamp(0.8rem, 3vw, 1rem);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.05);
+            background-color: #20b859;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-float:active {
+            transform: scale(0.98);
+        }
+
+        .whatsapp-float i {
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+        }
+
+        /* Auto-refresh indicator */
+        .refresh-indicator {
+            text-align: center;
+            font-size: clamp(0.7rem, 2.5vw, 0.75rem);
+            color: var(--gray);
+            margin-top: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        /* Mobile Specific Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                gap: 15px;
+                background: var(--white);
+                border-radius: 20px;
+                margin-top: 10px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 10px;
+                font-size: 1rem;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .hero-grid {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .tagline {
+                text-align: left;
+            }
+
+            .about-container {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .about-content {
+                text-align: center;
+            }
+
+            .about-content .owner-name:after {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .highlight-badge {
+                justify-content: center;
+            }
+
+            .about-stats {
+                justify-content: center;
+            }
+
+            .contact-info p {
+                justify-content: flex-start;
+            }
+
+            .features-grid {
+                gap: 20px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .whatsapp-float span {
+                display: inline;
+            }
+        }
+
+        /* Small Mobile Devices */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-buttons .btn-primary,
+            .hero-buttons .btn-outline {
+                width: 100%;
+                text-align: center;
+            }
+
+            .badge {
+                width: 100%;
+                text-align: center;
+            }
+
+            .feature {
+                padding: 20px 15px;
+            }
+
+            .whatsapp-float {
+                bottom: 15px;
+                left: 15px;
+                padding: 8px 16px;
+            }
+
+            .whatsapp-float span {
+                display: none;
+            }
+
+            .whatsapp-float i {
+                font-size: 1.4rem;
+                margin: 0;
+            }
+
+            .whatsapp-float:hover span {
+                display: inline;
+            }
+
+            .stat-item {
+                flex: 1;
+                min-width: 80px;
+            }
+        }
+
+        /* Tablet Styles */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                padding: 0 30px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Touch Device Optimizations */
+        @media (hover: none) and (pointer: coarse) {
+
+            .btn-primary:active,
+            .btn-outline:active,
+            .feature:active {
+                transform: scale(0.98);
+            }
+
+            .nav-links a:active {
+                color: var(--violet);
+            }
+        }
+
+        /* Prevent Horizontal Scroll */
+        img,
+        iframe,
+        video {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="quickserve.png" alt="QuickServe Digital Logo" class="logo-img" id="squadLogo">
+                <h2>QuickServe <span>Digital</span></h2>
+            </div>
+            <div class="menu-icon" id="menuToggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <section id="home" class="hero">
+        <div class="container hero-grid">
+            <div class="hero-image">
+                <img src="quickserve.png" alt="Roni Paul - Owner" class="owner-photo" id="ownerPhoto">
+            </div>
+            <div class="hero-content">
+                <h1><span style="color: rgb(0, 0, 104);">Quick</span><span style="color: green;">Serve</span> <span
+                        style="color: orange;">Digital</span></h1>
+                <div class="tagline">"All Government & Digital Services at One Place"</div>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn-primary">View Services</a>
+                    <a href="#contact" class="btn-outline">Contact Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-content">
+                    <h2 class="owner-name">Roni Paul</h2>
+                    <p class="about-description">
+                        <strong>QuickServe Digital</strong> is founded by <strong>Roni Paul</strong> with a vision to
+                        provide fast, reliable, and affordable digital and government services under one roof.
+                        With years of experience in the field, Roni has helped thousands of customers access
+                        essential services without any hassle.
+                    </p>
+                    <p class="about-description">
+                        Our mission is to bridge the gap between citizens and government/digital services by
+                        offering a one-stop solution that is transparent, efficient, and customer-friendly.
+                        We believe in making technology accessible to everyone.
+                    </p>
+                    <!-- <div class="highlight-badge">
+                        <span class="badge"><i class="fas fa-check-circle"></i> 5+ Years Experience</span>
+                        <span class="badge"><i class="fas fa-smile"></i> 5000+ Happy Clients</span>
+                        <span class="badge"><i class="fas fa-trophy"></i> 100% Satisfaction</span>
+                    </div> -->
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">14+</div>
+                            <div class="stat-label">Services</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Support</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Trusted</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-photo">
+                    <img src="image.png" alt="Roni Paul - Owner" class="about-round-photo" id="aboutOwnerPhoto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div id="servicesContainer">
+                <div class="loading-spinner"><i class="fas fa-spinner fa-pulse"></i> Loading services from Google
+                    Sheets...</div>
+            </div>
+            <div class="refresh-indicator">
+                <i class="fas fa-sync-alt"></i> Auto-updates every 1 second from DB
+            </div>
+        </div>
+    </section>
+
+    <section class="why-us">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us</h2>
+            <div class="features-grid">
+                <div class="feature"><i class="fas fa-rocket"></i>
+                    <h3>Fast Service</h3>
+                    <p>Quick turnaround time</p>
+                </div>
+                <div class="feature"><i class="fas fa-handshake"></i>
+                    <h3>Trusted Support</h3>
+                    <p>Experienced team</p>
+                </div>
+                <div class="feature"><i class="fas fa-rupee-sign"></i>
+                    <h3>Affordable Price</h3>
+                    <p>Budget-friendly rates</p>
+                </div>
+                <div class="feature"><i class="fas fa-store"></i>
+                    <h3>One-stop solution</h3>
+                    <p>All services in one place</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Transparent Pricing</h2>
+            <div id="pricingContainer">
+                <div class="pricing-loading"><i class="fas fa-spinner fa-pulse"></i> Loading pricing data...</div>
+            </div>
+            <div class="refresh-indicator">
+                <i class="fas fa-sync-alt"></i> Auto-updates every 1 second from DB
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <p><i class="fas fa-user"></i> <strong>Roni Paul</strong> (Owner)</p>
+                    <p><i class="fas fa-phone-alt"></i> <a href="tel:+918016138213"
+                            style="color: var(--violet); text-decoration: none;">+91 80161 38213</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Birnagar, Nadia, West Bengal, India</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM – 9:00 PM</p>
+                </div>
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marked-alt fa-3x" style="margin-bottom: 12px;"></i>
+                    <p>📍 Google Map Integration</p>
+                    <small>Coming Soon</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div><strong><span style="color: white;">Quick</span><span style="color: rgb(0, 200, 0);">Serve</span>
+                        <span style="color: orange;">Digital</span></strong><br>Empowering citizens with digital & govt
+                    services</div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div><i class="fas fa-envelope"></i> quick@servedigital.com</div>
+            </div>
+            <div class="copyright">© 2026 QuickServe Digital — All Government & Digital Services at One Place</div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/918016138213?text=Hello%21%20I%20need%20assistance%20with%20QuickServe%20Digital%20services."
+        class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+        <span>Chat with us</span>
+    </a>
+
+    <script>
+        // Service Type Shorthand Mapping
+        const TYPE_MAPPING = {
+            'gs': { full: 'Government Services', badgeClass: 'badge-govt', icon: '🏛️' },
+            'ds': { full: 'Digital Services', badgeClass: 'badge-digital', icon: '💻' },
+            'ss': { full: 'Shop Services', badgeClass: 'badge-shop', icon: '🖨️' },
+            'cs': { full: 'Computer Services', badgeClass: 'badge-computer', icon: '🛠️' }
+        };
+
+        function getFullCategory(typeInput) {
+            if (!typeInput) return null;
+            const cleanInput = typeInput.toString().trim().toLowerCase();
+            if (TYPE_MAPPING[cleanInput]) {
+                return TYPE_MAPPING[cleanInput];
+            }
+            return null;
+        }
+
+        function formatPrice(priceInput) {
+            if (!priceInput) return '—';
+            let price = priceInput.toString().trim();
+            if (price.includes('₹')) return price;
+            const rangeMatch = price.match(/^(\d+)\s*[-–]\s*(\d+)$/);
+            if (rangeMatch) {
+                return `₹${rangeMatch[1]} – ₹${rangeMatch[2]}`;
+            }
+            const singleMatch = price.match(/^(\d+)$/);
+            if (singleMatch) {
+                return `₹${singleMatch[1]}`;
+            }
+            return price;
+        }
+
+        const SERVICES_SHEET_URL = "https://docs.google.com/spreadsheets/d/13HK7H5T4vvcPkXtTEWZJ9IbkOM9H0ZYIw4hQDqevjV8/gviz/tq?tqx=out:csv&sheet=Our-Services";
+        const PRICING_SHEET_URL = "https://docs.google.com/spreadsheets/d/13HK7H5T4vvcPkXtTEWZJ9IbkOM9H0ZYIw4hQDqevjV8/gviz/tq?tqx=out:csv&sheet=Pricing";
+
+        const FALLBACK_SERVICES = [
+            { name: "Aadhaar Enrollment / Update", type: "gs" },
+            { name: "PAN Card Application", type: "gs" },
+            { name: "Voter ID Application", type: "gs" },
+            { name: "Government Schemes Assistance", type: "gs" },
+            { name: "Online Form Filling", type: "ds" },
+            { name: "Exam Registration", type: "ds" },
+            { name: "Job Application Portal", type: "ds" },
+            { name: "Xerox / Photocopy", type: "ss" },
+            { name: "High Quality Print", type: "ss" },
+            { name: "Document Scanning", type: "ss" },
+            { name: "Lamination Services", type: "ss" },
+            { name: "Software Installation", type: "cs" },
+            { name: "Hardware Repair", type: "cs" },
+            { name: "Computer Accessories", type: "cs" }
+        ];
+
+        const FALLBACK_PRICING = [
+            { item: "Form Fill-up", price: "50 - 200" },
+            { item: "Print (per page)", price: "2 - 10" },
+            { item: "Xerox/Scan", price: "2 - 5" },
+            { item: "Computer Repair", price: "Depends on issue" },
+            { item: "Lamination", price: "10 - 50" }
+        ];
+
+        function parseCSV(csvText, hasHeader = true) {
+            const lines = [];
+            let currentLine = "";
+            let inQuotes = false;
+            for (let i = 0; i < csvText.length; i++) {
+                const char = csvText[i];
+                if (char === '"') {
+                    inQuotes = !inQuotes;
+                    currentLine += char;
+                } else if (char === '\n' && !inQuotes) {
+                    lines.push(currentLine);
+                    currentLine = "";
+                } else {
+                    currentLine += char;
+                }
+            }
+            if (currentLine) lines.push(currentLine);
+            const result = [];
+            const startIdx = hasHeader ? 1 : 0;
+            const headers = hasHeader ? parseCSVLine(lines[0]) : [];
+            for (let i = startIdx; i < lines.length; i++) {
+                if (!lines[i].trim()) continue;
+                const values = parseCSVLine(lines[i]);
+                if (hasHeader) {
+                    const obj = {};
+                    headers.forEach((header, idx) => {
+                        obj[header] = values[idx] ? values[idx].replace(/^"|"$/g, '').trim() : "";
+                    });
+                    if (Object.values(obj).some(v => v)) result.push(obj);
+                } else {
+                    result.push(values);
+                }
+            }
+            return result;
+        }
+
+        function parseCSVLine(line) {
+            const result = [];
+            let current = "";
+            let inQuotes = false;
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    result.push(current);
+                    current = "";
+                } else {
+                    current += char;
+                }
+            }
+            result.push(current);
+            return result;
+        }
+
+        async function fetchAndRenderServices() {
+            const container = document.getElementById('servicesContainer');
+            try {
+                const response = await fetch(SERVICES_SHEET_URL);
+                if (!response.ok) throw new Error('Network error');
+                const csvText = await response.text();
+                const rows = parseCSV(csvText, true);
+                const services = [];
+                for (let row of rows) {
+                    const keys = Object.keys(row);
+                    const serviceName = keys[0] ? row[keys[0]] : (row[0] || '');
+                    let serviceType = keys[1] ? row[keys[1]] : (row[1] || '');
+                    if (serviceName && serviceType) {
+                        const categoryInfo = getFullCategory(serviceType);
+                        if (categoryInfo) {
+                            services.push({
+                                name: serviceName,
+                                type: categoryInfo.full,
+                                badgeClass: categoryInfo.badgeClass,
+                                icon: categoryInfo.icon
+                            });
+                        } else if (serviceType) {
+                            services.push({
+                                name: serviceName,
+                                type: serviceType,
+                                badgeClass: 'badge-govt',
+                                icon: '📄'
+                            });
+                        }
+                    }
+                }
+                if (services.length === 0) {
+                    renderServicesTable(processFallbackServices(FALLBACK_SERVICES), container);
+                } else {
+                    renderServicesTable(services, container);
+                }
+            } catch (error) {
+                console.warn('Failed to load services from Google Sheets, using fallback data', error);
+                renderServicesTable(processFallbackServices(FALLBACK_SERVICES), container);
+            }
+        }
+
+        function processFallbackServices(fallback) {
+            return fallback.map(service => {
+                const categoryInfo = getFullCategory(service.type);
+                if (categoryInfo) {
+                    return {
+                        name: service.name,
+                        type: categoryInfo.full,
+                        badgeClass: categoryInfo.badgeClass,
+                        icon: categoryInfo.icon
+                    };
+                }
+                return {
+                    name: service.name,
+                    type: service.type,
+                    badgeClass: 'badge-govt',
+                    icon: '📄'
+                };
+            });
+        }
+
+        function renderServicesTable(services, container) {
+            if (!services || services.length === 0) {
+                container.innerHTML = '<div class="empty-state"><i class="fas fa-folder-open fa-3x" style="margin-bottom: 16px; opacity: 0.5;"></i><p>No services available. Please check Google Sheets configuration.</p></div>';
+                return;
+            }
+            let html = `<div class="services-table-wrapper"><table class="services-table"><thead><tr><th>#</th><th>Service Name</th><th>Service Category</th></tr></thead><tbody>`;
+            services.forEach((service, index) => {
+                html += `<tr><td>${index + 1}</td><td><strong>${escapeHtml(service.name)}</strong></td><td><span class="service-type-badge ${service.badgeClass}">${service.icon} ${escapeHtml(service.type)}</span></td></tr>`;
+            });
+            html += `</tbody></table></div>`;
+            container.innerHTML = html;
+        }
+
+        async function fetchAndRenderPricing() {
+            const container = document.getElementById('pricingContainer');
+            try {
+                const response = await fetch(PRICING_SHEET_URL);
+                if (!response.ok) throw new Error('Network error');
+                const csvText = await response.text();
+                const rows = parseCSV(csvText, true);
+                const pricingItems = [];
+                for (let row of rows) {
+                    const keys = Object.keys(row);
+                    const itemName = keys[0] ? row[keys[0]] : (row[0] || '');
+                    let priceInfo = keys[1] ? row[keys[1]] : (row[1] || '');
+                    if (itemName && priceInfo) {
+                        const formattedPrice = formatPrice(priceInfo);
+                        pricingItems.push({ item: itemName, price: formattedPrice });
+                    }
+                }
+                if (pricingItems.length === 0) {
+                    renderPricingTable(FALLBACK_PRICING.map(p => ({ ...p, price: formatPrice(p.price) })), container);
+                } else {
+                    renderPricingTable(pricingItems, container);
+                }
+            } catch (error) {
+                console.warn('Failed to load pricing from Google Sheets, using fallback data', error);
+                renderPricingTable(FALLBACK_PRICING.map(p => ({ ...p, price: formatPrice(p.price) })), container);
+            }
+        }
+
+        function renderPricingTable(pricingData, container) {
+            if (!pricingData || pricingData.length === 0) {
+                container.innerHTML = '<div class="pricing-card"><p>No pricing data available.</p></div>';
+                return;
+            }
+            let html = `<div class="pricing-card"><table class="pricing-table">`;
+            pricingData.forEach(item => {
+                html += `<tr><td>${escapeHtml(item.item)}</td><td>${escapeHtml(item.price)}</td></tr>`;
+            });
+            html += `</table><div class="pricing-note"><i class="fas fa-info-circle"></i> Prices may vary based on complexity. Contact for exact quote.</div></div>`;
+            container.innerHTML = html;
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/[&<>]/g, function (m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+
+        function setupMobileMenu() {
+            const menuIcon = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            if (menuIcon) {
+                menuIcon.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    navLinks.classList.toggle('active');
+                });
+                document.addEventListener('click', (e) => {
+                    if (!navLinks.contains(e.target) && !menuIcon.contains(e.target)) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+            }
+        }
+
+        let servicesInterval, pricingInterval;
+
+        function startAutoRefresh() {
+            if (servicesInterval) clearInterval(servicesInterval);
+            if (pricingInterval) clearInterval(pricingInterval);
+            fetchAndRenderServices();
+            fetchAndRenderPricing();
+            servicesInterval = setInterval(fetchAndRenderServices, 2000);
+            pricingInterval = setInterval(fetchAndRenderPricing, 2000);
+        }
+
+        function init() {
+            setupMobileMenu();
+            startAutoRefresh();
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === "#") return;
+                    const targetElem = document.querySelector(targetId);
+                    if (targetElem) {
+                        e.preventDefault();
+                        targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        if (window.innerWidth <= 768) {
+                            document.getElementById('navLinks')?.classList.remove('active');
+                        }
+                    }
+                });
+            });
+        }
+
+        init();
+
+        console.log("===== QUICKSERVE DIGITAL - FULLY RESPONSIVE VERSION =====");
+        console.log("✓ Optimized for all devices (mobile, tablet, desktop)");
+        console.log("✓ About section redesigned with round photo on right side");
+        console.log("✓ Services & Pricing auto-update every 1 second");
+        console.log("✓ Touch-friendly interactions");
+        console.log("======================================================");
+    </script>
+</body>
+
+</html>
